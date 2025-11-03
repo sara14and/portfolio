@@ -60,7 +60,8 @@ return [
       'company' => 'The Factory - Hardware Design Lab',
       'points'  => [
         'Animation d’ateliers et formation des pairs sur l’équipement du laboratoire (soudure, fraisage PCB, impression 3D).',
-        'Organisation et promotion d’hackathons et d’événements techniques, gestion des réseaux sociaux.',
+        'Organisation et promotion de hackathons et d’événements techniques.',
+        'Gestion des réseaux sociaux et site web',
       ],
     ],
   ],

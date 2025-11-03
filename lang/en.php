@@ -61,7 +61,8 @@ return [
       'company' => 'The Factory - Hardware Design Lab',
       'points'  => [
         'Led workshops and trained peers on lab equipment (soldering, PCB milling, 3D printing).',
-        'Organized and promoted hackathons and technical events while managing social media.',
+        'Organized and promoted hackathons and technical events',
+        'Managed social media channels and website',
       ],
     ],
   ],

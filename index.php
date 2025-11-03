@@ -237,6 +237,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <button
         type="button"
         id="resetSearch"
+        <?= $search === '' ? 'hidden' : '' ?>
         aria-label="<?= htmlspecialchars($t['reset_search'] ?? 'Reset search') ?>"
       >×</button>
       <span id="matchInfo" class="match-count" aria-live="polite"></span>

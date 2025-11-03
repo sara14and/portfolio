@@ -35,7 +35,7 @@ $projects = [
         "Capstone Project (In Progress)",
         "Projet de Capstone (en cours)",
         "Developing an open-source benchmark to evaluate LLMs’ ability to generate code from domain models.",
-        "Développement d’un banc d’essai open source pour évaluer la capacité des LLM à générer du code à partir de modèles métier.",
+        "Développement d’un cadre d’évaluation open source pour mesurer la capacité des LLMs à générer du code à partir de modèles de domaine.",
         ""
     ],
     [
@@ -63,7 +63,7 @@ $projects = [
         "Portfolio Website",
         "Site Portfolio",
         "Responsive portfolio built with PHP, HTML, CSS, and JavaScript.",
-        "Portfolio responsive développé avec PHP, HTML, CSS et JavaScript.",
+        "Portfolio interactif développé avec PHP, HTML, CSS et JavaScript.",
         "https://portefolio-yz5d.onrender.com/"
     ]
 ];

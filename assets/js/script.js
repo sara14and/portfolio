@@ -66,6 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let   matchIndex  = 0;
   let   matches     = [];
 
+  function toggleResetButton() {
+    resetBtn.hidden = searchInput.value.trim() === '';
+  }
+
+  toggleResetButton();
+
   function clearQueryParam() {
     const url = new URL(window.location);
     url.searchParams.delete('q');
@@ -86,9 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function highlightMatches(term) {
+    toggleResetButton();
     clearHighlights();
     if (!term) return;
-  
+
     const regex = new RegExp(`(${term})`, 'gi');
     document.querySelectorAll('h2, h3, p, li')
       .forEach(el => {
@@ -125,6 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightMatches(term);
   }
 
+  searchInput.addEventListener('input', toggleResetButton);
+
   searchForm.addEventListener('submit', e => {
     e.preventDefault();
     const value = searchInput.value.trim();
@@ -159,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     url.searchParams.delete('q');
     window.history.replaceState({}, '', url);
     clearHighlights();
+    toggleResetButton();
   });
 
   
@@ -186,7 +196,35 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const res = await fetch(`api/project_detail.php?id=${id}`);
         const json = await res.json();
-        detail.innerHTML = `<p>${json.description}</p>`;
+        const { description, link, image, title } = json;
+        detail.textContent = '';
+
+        if (image) {
+          const img = document.createElement('img');
+          img.src = image;
+          const fallbackTitle = title || '';
+          const altTemplate = i18n.project_screenshot_alt || '';
+          img.alt = altTemplate.replace('{title}', fallbackTitle);
+          img.className = 'project-shot';
+          detail.appendChild(img);
+        }
+
+        if (description) {
+          const p = document.createElement('p');
+          p.textContent = description;
+          detail.appendChild(p);
+        }
+
+        if (link) {
+          const anchor = document.createElement('a');
+          anchor.href = link;
+          anchor.target = '_blank';
+          anchor.rel = 'noopener noreferrer';
+          anchor.className = 'project-link';
+          anchor.textContent = i18n.view_repo;
+          detail.appendChild(anchor);
+        }
+
         detail.style.display = 'block';
         btn.textContent = i18n.hide_desc;
       } catch {
